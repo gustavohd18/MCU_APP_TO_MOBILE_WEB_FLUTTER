@@ -1,7 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'package:mcu_app/pages/video.dart';
 import 'package:mcu_app/repository/data.dart';
 import 'package:mcu_app/repository/mcu.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:url_launcher/url_launcher.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -18,6 +21,9 @@ class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
       firstMovies = list[number];
     });
   }
+
+  void _launchURL(String url) async =>
+    await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
 
   @override
   void initState() {
@@ -60,6 +66,8 @@ class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
                         color: Colors.white,
                         fontWeight: FontWeight.bold),
                   )),
+                   (!kIsWeb) 
+                   ? 
               IconButton(
                 onPressed: () => Navigator.push(
                   context,
@@ -72,7 +80,17 @@ class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
                   size: 40,
                 ),
                 color: Colors.white,
+              ) :
+                          IconButton(
+                onPressed: () => _launchURL(firstMovies.urlTrailer),
+                icon: Icon(
+                  Icons.play_circle_fill_rounded,
+                  color: Colors.white,
+                  size: 40,
+                ),
+                color: Colors.white,
               ),
+
               Padding(
                 padding: EdgeInsets.only(top: 200, left: 10, bottom: 50),
                 child: Text(
