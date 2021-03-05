@@ -13,12 +13,10 @@ class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
 
   AnimationController _controller;
 
-  double bottom;
-
   void setHome(int number) {
     setState(() {
       firstMovies = list[number];
-      bottom = (firstMovies.name == list[number].name) ? 15 : 0;
+    
     });
   }
 
@@ -26,13 +24,19 @@ class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     firstMovies = list[0];
-    bottom = 0;
     _controller = AnimationController(
       vsync: this,
       duration: Duration(seconds: 3),
     );
     _controller.repeat();
   }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -116,10 +120,6 @@ class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
                               ),
                             ),
                           ),
-                          Divider(
-                            height: 15,
-                            color: Colors.white,
-                          )
                         ],
                       )),
                 ),
