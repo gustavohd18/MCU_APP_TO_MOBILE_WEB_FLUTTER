@@ -1,32 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:mcu_app/pages/video.dart';
 import 'package:mcu_app/repository/data.dart';
+import 'package:mcu_app/repository/mcu.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class Home extends StatelessWidget {
-  final firstMovies = ironMan;
+class Home extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
 
-  Widget youtubePlayer() {
-    return YoutubePlayerBuilder(
-      player: YoutubePlayer(
-        controller: YoutubePlayerController(
-          initialVideoId: 'xXAdp_KJ-0A',
-          flags: YoutubePlayerFlags(
-            hideControls: false,
-            controlsVisibleAtStart: true,
-            autoPlay: false,
-            mute: false,
-          ),
-        ),
-        aspectRatio: 16 / 9,
-      ),
-      builder: (context, player) {
-        return Column(
-          children: [
-            player,
-          ],
-        );
-      },
-    );
+class _MyHomePageState extends State<Home> {
+  MCU firstMovies;
+
+  void setHome(int number) {
+    setState(() {
+      firstMovies = list[number];
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    firstMovies = list[0];
   }
 
   @override
@@ -55,25 +50,21 @@ class Home extends StatelessWidget {
                         color: Colors.white,
                         fontWeight: FontWeight.bold),
                   )),
-              SizedBox(
-                  height: 18.0,
-                  width: 18.0,
-                  child: Padding(
-                      padding: EdgeInsets.only(left: 15, top: 15),
-                      child: IconButton(
-                        color: Colors.white,
-                        icon: Icon(
-                          Icons.play_circle_fill_rounded,
-                          color: Colors.white,
-                          size: 40,
-                        ),
-                        onPressed: () {
-                          print("chamei a funcao");
-                          //  getVideo();
-                        },
-                      ))),
+              IconButton(
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Video(firstMovies.urlTrailer)),
+                ),
+                icon: Icon(
+                  Icons.play_circle_fill_rounded,
+                  color: Colors.white,
+                  size: 40,
+                ),
+                color: Colors.white,
+              ),
               Padding(
-                padding: EdgeInsets.only(top: 200, left: 10),
+                padding: EdgeInsets.only(top: 200, left: 10, bottom: 50),
                 child: Text(
                   "Linha temporal MCU",
                   style: TextStyle(
@@ -82,43 +73,50 @@ class Home extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
               ),
-              Row(
-                children: [
-                  Column(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: Colors.transparent),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(5.0),
-                              topRight: Radius.circular(5.0)),
-                          child: Image.network(
-                            firstMovies.mainImage,
-                            fit: BoxFit.fill,
-                            width: 120,
-                            height: 200,
-                          ),
-                        ),
-                      ),
-                      Divider(
-                        height: 15,
-                        color: Colors.white,
-                      )
-                    ],
-                  )
-                ],
-              ),
-              Center(
-                child: Text(
-                  "Veja mais",
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ),
-              )
+              Expanded(
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: list.length,
+                      itemBuilder: (context, int index) => GestureDetector(
+                            onTap: () => setHome(index),
+                            child: Padding(
+                                padding: EdgeInsets.only(right: 15),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                          color: Colors.transparent),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(5.0)),
+                                        child: Image.network(
+                                          list[index].mainImage,
+                                          fit: BoxFit.fill,
+                                          width: 120,
+                                          height: 200,
+                                        ),
+                                      ),
+                                    ),
+                                    Divider(
+                                      height: 15,
+                                      color: Colors.white,
+                                    )
+                                  ],
+                                )),
+                          ))),
+              Padding(
+                  padding: EdgeInsets.only(bottom: 30),
+                  child: Center(
+                    child: Text(
+                      "Veja mais",
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  )),
             ],
           )
         ],
