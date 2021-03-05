@@ -16,7 +16,6 @@ class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
   void setHome(int number) {
     setState(() {
       firstMovies = list[number];
-    
     });
   }
 
@@ -37,13 +36,13 @@ class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-           Image.asset(firstMovies.backgroundImage,
+          Image.asset(
+            firstMovies.backgroundImage,
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             fit: BoxFit.cover,
@@ -109,17 +108,21 @@ class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
                             child: ClipRRect(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(5.0)),
-                              child: Image.asset(list[index].mainImage,
+                              child: Image.asset(
+                                list[index].mainImage,
                                 fit: BoxFit.cover,
                                 width: 120,
-                               height: 200,
-                        
+                                height: 200,
                               ),
                             ),
                           ),
                           Padding(
                             padding: EdgeInsets.only(top: 2),
-                            child: Checkbox(value: (firstMovies.name == list[index].name), checkColor: Colors.white,onChanged: (value) => print("value"),),
+                            child: Checkbox(
+                              value: (firstMovies.name == list[index].name),
+                              checkColor: Colors.white,
+                              onChanged: (value) => print("value"),
+                            ),
                           )
                         ],
                       )),
