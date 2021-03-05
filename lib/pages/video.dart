@@ -7,14 +7,15 @@ class Video extends StatelessWidget {
   Video(this.url);
   @override
   Widget build(BuildContext context) {
+    final newURl = YoutubePlayer.convertUrlToId(url);
     return SafeArea(
         child: YoutubePlayerBuilder(
       onEnterFullScreen: () {
-       // SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);
+        // SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);
       },
       player: YoutubePlayer(
         controller: YoutubePlayerController(
-          initialVideoId: url,
+          initialVideoId: newURl,
           flags: YoutubePlayerFlags(
             hideControls: false,
             controlsVisibleAtStart: true,

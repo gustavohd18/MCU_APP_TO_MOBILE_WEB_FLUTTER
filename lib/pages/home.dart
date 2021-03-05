@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mcu_app/pages/video.dart';
 import 'package:mcu_app/repository/data.dart';
 import 'package:mcu_app/repository/mcu.dart';
+
 class Home extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
