@@ -8,8 +8,12 @@ class Home extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<Home> {
+class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
   MCU firstMovies;
+
+  Tween<double> _paddingTween = Tween<double>(begin: 1, end: 2);
+
+  AnimationController _controller;
 
   void setHome(int number) {
     setState(() {
@@ -21,6 +25,11 @@ class _MyHomePageState extends State<Home> {
   void initState() {
     super.initState();
     firstMovies = list[0];
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 3),
+    );
+    _controller.repeat();
   }
 
   @override
@@ -105,17 +114,24 @@ class _MyHomePageState extends State<Home> {
                                   ],
                                 )),
                           ))),
-              Padding(
-                  padding: EdgeInsets.only(bottom: 30),
-                  child: Center(
-                    child: Text(
-                      "Veja mais",
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  )),
+              AnimatedBuilder(
+                animation: _controller.view,
+                builder: (context, child) {
+                  return Transform.scale(
+                      scale: _controller.value * 1.1, child: child);
+                },
+                child: Padding(
+                    padding: EdgeInsets.only(bottom: 30),
+                    child: Center(
+                      child: Text(
+                        "Veja mais",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    )),
+              ),
             ],
           )
         ],
