@@ -11,8 +11,6 @@ class Home extends StatefulWidget {
 class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
   MCU firstMovies;
 
-  Tween<double> _paddingTween = Tween<double>(begin: 1, end: 2);
-
   AnimationController _controller;
 
   void setHome(int number) {
