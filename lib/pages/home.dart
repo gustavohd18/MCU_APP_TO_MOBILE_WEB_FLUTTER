@@ -13,9 +13,12 @@ class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
 
   AnimationController _controller;
 
+  double bottom;
+
   void setHome(int number) {
     setState(() {
       firstMovies = list[number];
+      bottom = (firstMovies.name == list[number].name) ? 15 : 0;
     });
   }
 
@@ -23,6 +26,7 @@ class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     firstMovies = list[0];
+    bottom = 0;
     _controller = AnimationController(
       vsync: this,
       duration: Duration(seconds: 3),
@@ -81,37 +85,45 @@ class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
               ),
               Expanded(
                   child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: list.length,
-                      itemBuilder: (context, int index) => GestureDetector(
-                            onTap: () => setHome(index),
-                            child: Padding(
-                                padding: EdgeInsets.only(right: 15),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          color: Colors.transparent),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(5.0)),
-                                        child: Image.network(
-                                          list[index].mainImage,
-                                          fit: BoxFit.fill,
-                                          width: 120,
-                                          height: 200,
-                                        ),
-                                      ),
-                                    ),
-                                    Divider(
-                                      height: 15,
-                                      color: Colors.white,
-                                    )
-                                  ],
-                                )),
-                          ))),
+                scrollDirection: Axis.horizontal,
+                itemCount: list.length,
+                itemBuilder: (context, index) => GestureDetector(
+                  onTap: () => setHome(index),
+                  child: Padding(
+                      padding: EdgeInsets.only(right: 15),
+                      child: Column(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: Colors.transparent,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black,
+                                    blurRadius: 2.0,
+                                    spreadRadius: 0.0,
+                                    offset: Offset(2.0, 2.0),
+                                  )
+                                ]),
+                            child: ClipRRect(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5.0)),
+                              child: Image.network(
+                                list[index].mainImage,
+                                fit: BoxFit.fill,
+                                width: 120,
+                                height: 200,
+                              ),
+                            ),
+                          ),
+                          Divider(
+                            height: 15,
+                            color: Colors.white,
+                          )
+                        ],
+                      )),
+                ),
+              )),
               AnimatedBuilder(
                 animation: _controller.view,
                 builder: (context, child) {
