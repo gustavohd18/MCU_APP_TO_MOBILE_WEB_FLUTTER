@@ -10,7 +10,7 @@ class Video extends StatelessWidget {
     return SafeArea(
         child: YoutubePlayerBuilder(
       onEnterFullScreen: () {
-        SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+       // SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);
       },
       player: YoutubePlayer(
         controller: YoutubePlayerController(
