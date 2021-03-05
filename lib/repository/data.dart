@@ -51,5 +51,32 @@ final avengers = MCU(
     "https://i.pinimg.com/originals/41/61/43/416143c9c1d1e0925b88259fe868ee6c.jpg",
     "https://i.pinimg.com/originals/41/61/43/416143c9c1d1e0925b88259fe868ee6c.jpg");
 
+final ironMan3 = MCU(
+    "Homem de Ferro 3",
+    "https://www.youtube.com/watch?v=igfXmU1r_mc",
+    "O terceiro e último filme autônomo do Homem de Ferro se passa seis meses após a luta gigante na cidade de Nova York. Tony Stark está lidando com as memórias da batalha que ocorreu (e quase o matou). As memórias o levam a construir um exército de trajes do Homem de Ferro para que ele esteja sempre preparado",
+    "https://i.pinimg.com/originals/a0/2b/9a/a02b9a34e9579b8fce94c52c99b2c1c1.jpg",
+    "https://i.pinimg.com/originals/a0/2b/9a/a02b9a34e9579b8fce94c52c99b2c1c1.jpg");
 
-final List<MCU> list = [captainOne,captainMarvel, ironMan, ironMan2, hulk, thor, avengers];
+final thor2 = MCU(
+    "Thor e o mundo sombrio",
+    "https://www.youtube.com/watch?v=npvJ9FTgZbM",
+    "O segundo filme de Thor vê seu herói retornar a Asgard após a invasão da cidade de Nova York liderada por Loki. Ele não tem muito tempo para descansar, entretanto, quando os antigos Elfos Negros retornam. Eles já foram derrotados por seu avô e considerados extintos. Eles estão de volta agora e procuram o Aether, uma arma poderosa que mais tarde é revelada como uma Pedra do Infinito, ou uma das seis gemas poderosas no MCU.",
+    "https://www.wallpapertip.com/wmimgs/151-1517341_thor-the-dark-world-htc-hd-wallpaper-thor.jpg",
+    "https://www.wallpapertip.com/wmimgs/151-1517341_thor-the-dark-world-htc-hd-wallpaper-thor.jpg");
+
+final captain2 = MCU(
+    "Capitão América: O Soldado Invernal",
+    "https://www.youtube.com/watch?v=CTdvZwwShqM",
+    "O Capitão América tem trabalhado para Shield, uma agência governamental especial, desde os eventos de Os Vingadores, mas ele se pega questionando os motivos da organização enquanto aprende mais sobre seus planos. Além disso, seu amigo mais próximo retorna dos mortos e se torna um adversário, o Soldado Invernal, interpretado por Sebastian Stan. Este filme também apresenta The Falcon, interpretado por Anthony Mackie.",
+    "https://static.imgs.app/content/assetz/uploads/2017/04/captain-america-2-the-winter-soldier-android-wallpaper-whatsapp-android-iphone.jpg",
+    "https://static.imgs.app/content/assetz/uploads/2017/04/captain-america-2-the-winter-soldier-android-wallpaper-whatsapp-android-iphone.jpg");
+
+final guardians1 = MCU(
+    "Guardiões da Galáxia",
+    "https://www.youtube.com/watch?v=8VN_l57QWyQ",
+    "Guardians of the Galaxy é estrelado por Chris Pratt como Peter Quill, um necrófago que tropeça em uma Pedra do Infinito escondida nas ruínas de um mundo alienígena. Em uma corrida contra o tempo, ele forma um grupo desorganizado de párias que inclui um guaxinim falante (dublado por Bradley Cooper), Groot a árvore falante e outros. Juntos, eles devem impedir Ronan, o Acusador, de empunhar a Pedra do Infinito.",
+    "https://i.pinimg.com/originals/d0/74/a2/d074a2b6cce2eb7d392a101ebcaf7b8a.jpg",
+    "https://i.pinimg.com/originals/d0/74/a2/d074a2b6cce2eb7d392a101ebcaf7b8a.jpg");
+
+final List<MCU> list = [captainOne,captainMarvel, ironMan, ironMan2, hulk, thor, avengers, ironMan3, thor2, captain2,guardians1];
