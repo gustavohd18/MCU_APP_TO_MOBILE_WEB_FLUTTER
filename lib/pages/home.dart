@@ -43,10 +43,7 @@ class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          Image(
-            image: NetworkImage(
-              firstMovies.backgroundImage,
-            ),
+           Image.asset(firstMovies.backgroundImage,
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             fit: BoxFit.cover,
@@ -80,7 +77,7 @@ class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
               Padding(
                 padding: EdgeInsets.only(top: 200, left: 10, bottom: 50),
                 child: Text(
-                  "Linha temporal MCU",
+                  "Linha do Tempo MCU",
                   style: TextStyle(
                       fontSize: 20,
                       color: Colors.white,
@@ -112,14 +109,18 @@ class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
                             child: ClipRRect(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(5.0)),
-                              child: Image.network(
-                                list[index].mainImage,
-                                fit: BoxFit.fill,
+                              child: Image.asset(list[index].mainImage,
+                                fit: BoxFit.cover,
                                 width: 120,
-                                height: 200,
+                               height: 200,
+                        
                               ),
                             ),
                           ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 2),
+                            child: Checkbox(value: (firstMovies.name == list[index].name), checkColor: Colors.white,onChanged: (value) => print("value"),),
+                          )
                         ],
                       )),
                 ),
