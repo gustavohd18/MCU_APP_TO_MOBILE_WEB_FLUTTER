@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:mcu_app/pages/information.dart';
 import 'package:mcu_app/pages/video.dart';
 import 'package:mcu_app/repository/data.dart';
 import 'package:mcu_app/repository/mcu.dart';
@@ -23,7 +23,7 @@ class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
   }
 
   void _launchURL(String url) async =>
-    await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
+      await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
 
   @override
   void initState() {
@@ -66,31 +66,30 @@ class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
                         color: Colors.white,
                         fontWeight: FontWeight.bold),
                   )),
-                   (!kIsWeb) 
-                   ? 
-              IconButton(
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Video(firstMovies.urlTrailer)),
-                ),
-                icon: Icon(
-                  Icons.play_circle_fill_rounded,
-                  color: Colors.white,
-                  size: 40,
-                ),
-                color: Colors.white,
-              ) :
-                          IconButton(
-                onPressed: () => _launchURL(firstMovies.urlTrailer),
-                icon: Icon(
-                  Icons.play_circle_fill_rounded,
-                  color: Colors.white,
-                  size: 40,
-                ),
-                color: Colors.white,
-              ),
-
+              (!kIsWeb)
+                  ? IconButton(
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                Video(firstMovies.urlTrailer)),
+                      ),
+                      icon: Icon(
+                        Icons.play_circle_fill_rounded,
+                        color: Colors.white,
+                        size: 40,
+                      ),
+                      color: Colors.white,
+                    )
+                  : IconButton(
+                      onPressed: () => _launchURL(firstMovies.urlTrailer),
+                      icon: Icon(
+                        Icons.play_circle_fill_rounded,
+                        color: Colors.white,
+                        size: 40,
+                      ),
+                      color: Colors.white,
+                    ),
               Padding(
                 padding: EdgeInsets.only(top: 200, left: 10, bottom: 50),
                 child: Text(
@@ -155,12 +154,23 @@ class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
                 child: Padding(
                     padding: EdgeInsets.only(bottom: 30),
                     child: Center(
-                      child: Text(
-                        "Veja mais",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
+                      child: GestureDetector(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Information(
+                                firstMovies.backgroundImage,
+                                firstMovies.name,
+                                firstMovies.overview),
+                          ),
+                        ),
+                        child: Text(
+                          "Veja mais",
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     )),
               ),
