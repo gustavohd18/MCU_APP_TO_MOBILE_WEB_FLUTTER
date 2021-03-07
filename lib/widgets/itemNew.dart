@@ -27,7 +27,7 @@ class ItemNew extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 280, right: 5),
+              padding: EdgeInsets.only(right: 5),
               child: Text(
                 data,
                 style: TextStyle(
@@ -37,7 +37,7 @@ class ItemNew extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 280, right: 5),
+              padding: EdgeInsets.only( right: 5),
               child: Text(
                 time,
                 style: TextStyle(
@@ -47,7 +47,7 @@ class ItemNew extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 280, right: 5),
+              padding: EdgeInsets.only(right: 5),
               child: Text(
                 "Fonte: Tecmundo",
                 style: TextStyle(

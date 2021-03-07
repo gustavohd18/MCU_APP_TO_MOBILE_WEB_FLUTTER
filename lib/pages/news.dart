@@ -12,7 +12,7 @@ class News extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text(
-            "News",
+            "Noticias",
             style: TextStyle(
                 fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white),
           ),
