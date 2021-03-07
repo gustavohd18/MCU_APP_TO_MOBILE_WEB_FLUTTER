@@ -4,3 +4,4 @@ This is a project that aims to make information from the Marvel cinematic univer
 
 ## Screenshot
 <img src="images/main_app.png" width = "800px" height="700px"/><img src="images/detail_app.png" width = "800px" height="700px"/>
+<img src="images/new_app.png" width = "800px" height="700px"/><img src="images/splash_app.png" width = "800px" height="700px"/>
