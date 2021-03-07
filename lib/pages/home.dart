@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:mcu_app/model/news.dart';
 import 'package:mcu_app/pages/information.dart';
+import 'package:mcu_app/pages/news.dart';
 import 'package:mcu_app/pages/video.dart';
 import 'package:mcu_app/repository/data.dart';
 import 'package:mcu_app/repository/mcu.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:mcu_app/repository/service.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Home extends StatefulWidget {
@@ -13,6 +16,8 @@ class Home extends StatefulWidget {
 
 class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
   MCU firstMovies;
+
+  Future<List<NewsMarvel>> future;
 
   AnimationController _controller;
 
@@ -34,6 +39,7 @@ class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
       duration: Duration(seconds: 3),
     );
     _controller.repeat();
+    future = Service().getNews();
   }
 
   @override
@@ -58,7 +64,20 @@ class _MyHomePageState extends State<Home> with SingleTickerProviderStateMixin {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                  padding: EdgeInsets.only(top: 100, left: 30),
+                  padding: EdgeInsets.only(top: 60, left: 30),
+                  child: IconButton(
+                      onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => News(future)),
+                          ),
+                      icon: Icon(
+                        Icons.new_releases_rounded,
+                        color: Colors.white,
+                        size: 40,
+                      ))),
+              Padding(
+                  padding: EdgeInsets.only(top: 60, left: 30),
                   child: Text(
                     firstMovies.name,
                     style: TextStyle(
